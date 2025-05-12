@@ -1,0 +1,95 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Wave Hub | Key System",
+    Icon = 0,
+    LoadingTitle = "Loading.. Wave Hub..",
+    LoadingSubtitle = "By {if (Spsea); (exit);}",
+    Theme = "Default",
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
+    ConfigurationSaving = {
+        Enabled = true,
+        Foldername = nil,
+        Filename = "Dead Hub",
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true,
+    },
+    Keysystem = true,
+    KeySettings = {
+        Title = "Wave Hub [New]",
+        Subtitle = "Key System",
+        Note = "Join the discord server for the key!",
+        Filename = "Key",
+        SaveKey = true,
+        GrabKeyFromSite = true,
+        Key = {"Wave_New"},
+    },
+})
+
+local Tab = Window:CreateTab("Main","settings")
+
+-- leaderstats Money setup
+local Players    = game:GetService("Players")
+local player     = Players.LocalPlayer
+local lsFolder   = player:FindFirstChild("leaderstats") 
+                or Instance.new("Folder", player)
+lsFolder.Name    = "leaderstats"
+local moneyStat  = lsFolder:FindFirstChild("Money")
+                or (function()
+                        local v = Instance.new("IntValue", lsFolder)
+                        v.Name = "Money"
+                        v.Value = 0
+                        return v
+                    end)()
+
+-- display label
+local MoneyLabel = Tab:CreateLabel("Money: $" .. moneyStat.Value)
+moneyStat.Changed:Connect(function(val)
+    MoneyLabel:Set("Money: $" .. val)
+end)
+
+-- single input that *adds* whatever you type to your Money
+Tab:CreateInput({
+    Name = "Add Money Amount",
+    PlaceholderText = "Enter amount to add",
+    RemoveTextAfterFocusLost = true,
+    Callback = function(value)
+        moneyStat.Value = moneyStat.Value + (tonumber(value) or 0)
+    end,
+})
+
+-- optional helper if you ever want to script it:
+function AddMoney(amount)
+    moneyStat.Value = moneyStat.Value + (amount or 0)
+end
+
+local Button = Tab:CreateButton({
+   Name = "Fast Walker 🏃",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptingAct/wave-hub/refs/heads/main/Speed"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Esp Item 😈",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptingAct/Esp2/refs/heads/main/Cho"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Esp Train 😈",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptingAct/Wavee/refs/heads/main/Espitem"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Double Jump 💀",
+   Callback = function()
+   loadstring(game:HttpGet("https://pastebin.com/raw/0QbYRThv"))()
+   end,
+})
