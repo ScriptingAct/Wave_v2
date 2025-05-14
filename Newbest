@@ -1,6 +1,6 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
-    Name = "Wave Hub | Key System",
+    Name = "Wave Hub | [V2]",
     Icon = 0,
     LoadingTitle = "Loading.. Wave Hub..",
     LoadingSubtitle = "By Spsea.. Wave hub not executor..!",
